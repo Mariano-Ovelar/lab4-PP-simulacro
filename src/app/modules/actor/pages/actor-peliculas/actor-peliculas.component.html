@@ -1,0 +1,40 @@
+<main role="main text-center">
+  <div class="jumbotron">
+    <div class="container">
+      <!-- <h1 class="display-3">Buscardor</h1> -->
+      <!-- === TABLA DE ACTORES === -->
+      <app-tabla-actor
+        [listaActoresRecibida]="listaActores"
+        [showCheck]="true"
+        (actorElegido)="actorElegido($event)"
+      ></app-tabla-actor>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <!-- === PELICULAS DEL ACTOR === -->
+      <div class="col-md-4" *ngIf="actorSeleccionado">
+        <h2>Peliculas</h2>
+
+        <app-listado-peliculas
+          [listaPeliculasRecibida]="listaPeliculasFiltrada"
+        ></app-listado-peliculas>
+      </div>
+      <!-- === DETALLE DE LA PAIS SELECIONADA === -->
+      <div class="col-md-4" *ngIf="actorSeleccionado">
+        <h2>Pais</h2>
+        <app-detalle-pais
+          [PaisRecibido]="actorSeleccionado.paisNatal"
+        ></app-detalle-pais>
+      </div>
+      <!-- === DETALLE DE LA PELICULA SELECIONADA === -->
+      <div class="col-md-4" *ngIf="actorSeleccionado">
+        <h2>Detalle</h2>
+        <app-detalle-actor
+          [ActorRecibido]="actorSeleccionado"
+        ></app-detalle-actor>
+      </div>
+    </div>
+  </div>
+</main>

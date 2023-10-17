@@ -1,0 +1,9 @@
+<div class="album bg-body-tertiary">
+  <div class="container card shadow-sm">
+    <div class="row" *ngFor="let pelicula of listaPeliculasRecibida">
+      <img class="col" [src]="pelicula.fotoPelicula" alt="" />
+      <h3 class="col">{{ pelicula.nombre }}</h3>
+      <hr />
+    </div>
+  </div>
+</div>

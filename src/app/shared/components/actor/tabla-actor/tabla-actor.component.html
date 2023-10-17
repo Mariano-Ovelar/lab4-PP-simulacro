@@ -1,0 +1,23 @@
+<h4 class="d-flex justify-content-between align-items-center mb-3">
+  <span class="text-primary">Lista de actores</span>
+</h4>
+<ul class="list-group mb-3" *ngIf="listaActoresRecibida">
+  <li
+    class="list-group-item d-flex justify-content-between lh-sm"
+    *ngFor="let actor of listaActoresRecibida"
+  >
+    <div class="form-check">
+      <label>
+        <input
+          class="form-check-input"
+          type="radio"
+          name="options"
+          [value]="actor"
+          (change)="onOptionSelected(actor)"
+          *ngIf="showCheck"
+        />
+        {{ actor.apellido }} {{ actor.nombre }}
+      </label>
+    </div>
+  </li>
+</ul>

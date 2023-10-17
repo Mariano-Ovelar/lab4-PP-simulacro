@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "lab4-PP-simulacro",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

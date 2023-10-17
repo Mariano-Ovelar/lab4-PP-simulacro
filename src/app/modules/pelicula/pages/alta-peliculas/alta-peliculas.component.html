@@ -1,0 +1,90 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <!-- ====== Formulario ====== -->
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Agregar nueva película</h4>
+        <form [formGroup]="form" (ngSubmit)="guardar()" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <div class="mage-container">
+                <img *ngIf="img" class="card-img-top" [src]="img" />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div>
+                <label for="">Imagen:</label>
+                <input
+                  class="button-file"
+                  (change)="capturarFile($event)"
+                  name="imagen"
+                  type="file"
+                  accept="image/*"
+                  formControlName="fotoPelicula"
+                />
+              </div>
+              <div>
+                <label for="">Título:</label>
+                <input name="nombre" type="text" formControlName="nombre" />
+              </div>
+              <div>
+                <label for="">Fecha de estreno:</label>
+                <input
+                  type="date"
+                  value="2023-02-01"
+                  name="fechaEstreno"
+                  formControlName="fechaEstreno"
+                />
+              </div>
+              <div>
+                <label for="">Género:</label>
+                <select name="tipo" name="miselect" formControlName="tipo">
+                  <option value="">---Elegi un genero---</option>
+                  <option *ngFor="let item of generosPelicula">
+                    {{ item }}
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label for="">Cantidad de público:</label>
+                <input
+                  type="number"
+                  value="0"
+                  name="cantidadPublico"
+                  formControlName="cantidadPublico"
+                />
+              </div>
+              <div>
+                <label for="country" class="form-label">Actor:</label>
+                <div *ngIf="actorSeleccionado">
+                  {{ actorSeleccionado.apellido }}
+                  {{ actorSeleccionado.nombre }}
+                </div>
+                <div class="invalid-feedback">
+                  Please select a valid country.
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr class="my-4" />
+
+          <button class="w-100 btn btn-primary btn-lg" [disabled]="!form.valid">
+            Agregar
+          </button>
+        </form>
+      </div>
+      <!-- ====== Tabla Actores ====== -->
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <app-tabla-actor
+          [listaActoresRecibida]="listaActores"
+          [showCheck]="true"
+          (actorElegido)="actorElegido($event)"
+        ></app-tabla-actor>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- app.component.html -->
+<!--   <app-overlay *ngIf="isLoading"></app-overlay>
+  <app-spinner *ngIf="isLoading"></app-spinner> -->

@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "labo4-pp": {
+      "hosting": {
+        "lab4-PP-simulacro": [
+          "labo4-pp"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "labo4-pp"
+  }
+}

@@ -1,0 +1,88 @@
+<div class="container">
+  <main>
+    <div class="row g-5">
+      <!-- ====== Formulario ====== -->
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Nuevo actor</h4>
+        <form class="needs-validation" [formGroup]="form">
+          <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Nombre</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder=""
+                required
+                name="nombre"
+                formControlName="nombre"
+              />
+              <div class="invalid-feedback">Valid first name is required.</div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label">Apellido</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder=""
+                required
+                name="apellido"
+                formControlName="apellido"
+              />
+              <div class="invalid-feedback">Valid last name is required.</div>
+            </div>
+
+            <div class="col-6">
+              <label for="address" class="form-label"
+                >Fecha de nacimiento</label
+              >
+              <input
+                type="date"
+                class="form-control"
+                id="address"
+                required
+                name="fechaNacimiento"
+                formControlName="fechaNacimiento"
+              />
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="country" class="form-label">País natal:</label>
+              <div *ngIf="paisSelecionado">
+                <img src="{{ paisSelecionado.flags.png }}" alt="" />
+                {{ paisSelecionado.name.common }}
+              </div>
+              <div class="invalid-feedback">Please select a valid country.</div>
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <button
+            class="w-100 btn btn-primary btn-lg"
+            (click)="guardar()"
+            [disabled]="!form.valid"
+          >
+            Agregar
+          </button>
+        </form>
+      </div>
+      <!-- ====== Tabla Paises ====== -->
+      <div class="col-md-5 col-lg-4 order-md-last">
+        <app-tabla-paises
+          [listaPaisesRecibida]="listaPaises"
+          (paisElegido)="selecionPais($event)"
+        ></app-tabla-paises>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- app.component.html -->
+<!-- <app-overlay *ngIf="isLoading"></app-overlay>
+<app-spinner *ngIf="isLoading"></app-spinner> -->
